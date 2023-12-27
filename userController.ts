@@ -15,11 +15,13 @@ const UserController = {
     },
 
     createUser: (user: User): string => {
+        // TODO: should maintain data integrity (db level) and more robust error handling
         usersData.push(user)
         return JSON.stringify(user)
     },
 
     deleteUser: (ulid: string): string | CustomError => {
+        // TODO: permission checking 
         const user: User | undefined = usersData.find((user: User) => user.id == ulid)
         if (user === undefined) {
             return new CustomError('User not found', 404)
@@ -29,6 +31,7 @@ const UserController = {
     },
 
     updateUser: (req_user: User): string | CustomError => {
+        // TODO: maintain data integrity and more robust error handling
         const userIndex: number = usersData.findIndex((user: User) => user.id == req_user.id)
         if (userIndex === -1) {
             return new CustomError('User not found', 404)
