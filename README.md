@@ -1,0 +1,2 @@
+- Run using `npm run dev`
+- Make sure `ts-node` is installed
